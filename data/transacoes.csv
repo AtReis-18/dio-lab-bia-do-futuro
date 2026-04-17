@@ -1,11 +1,11 @@
-data,descricao,categoria,valor,tipo
-2025-10-01,Salário,receita,5000.00,entrada
-2025-10-02,Aluguel,moradia,1200.00,saida
-2025-10-03,Supermercado,alimentacao,450.00,saida
-2025-10-05,Netflix,lazer,55.90,saida
-2025-10-07,Farmácia,saude,89.00,saida
-2025-10-10,Restaurante,alimentacao,120.00,saida
-2025-10-12,Uber,transporte,45.00,saida
-2025-10-15,Conta de Luz,moradia,180.00,saida
-2025-10-20,Academia,saude,99.00,saida
-2025-10-25,Combustível,transporte,250.00,saida
+estrutura_conta,planejado_jan_26,realizado_jan_26
+1. ENTRADAS (Receita de Vendas),250000.00,235000.00
+1.1. Vendas à Vista,100000.00,110000.00
+1.2. Vendas à Prazo (Recebíveis),150000.00,125000.00
+2. SAÍDAS (Custos e Despesas),-180000.00,-192000.00
+2.1. Deduções (Impostos e Comissões),-30000.00,-28500.00
+2.2. Fornecedores (Matéria-prima),-90000.00,-105000.00
+2.3. Despesas Fixas (Aluguel/Folha),-60000.00,-58500.00
+3. INVESTIMENTOS,-20000.00,-25000.00
+3.1. Máquinas e Equipamentos,-20000.00,-25000.00
+4. GERAÇÃO FINAL DE FLUXO DE CAIXA,50000.00,18000.00
