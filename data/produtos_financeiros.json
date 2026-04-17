@@ -1,42 +1,105 @@
 [
   {
-    "nome": "Tesouro Selic",
-    "categoria": "renda_fixa",
-    "risco": "baixo",
-    "rentabilidade": "100% da Selic",
-    "aporte_minimo": 30.00,
-    "indicado_para": "Reserva de emergência e iniciantes"
+    "nome": "Capital de Giro (Simples/Tradicional)",
+    "categoria": "Crédito para Fluxo de Caixa",
+    "risco": "Moderado",
+    "custo": "Taxas de juros pré ou pós-fixadas e IOF",
+    "prazo": "Curto a médio prazo",
+    "indicado_para": "Financiamento do ciclo operacional, compra de estoque, pagamento de salários e equilíbrio de caixa[cite: 3, 4]."
   },
   {
-    "nome": "CDB Liquidez Diária",
-    "categoria": "renda_fixa",
-    "risco": "baixo",
-    "rentabilidade": "102% do CDI",
-    "aporte_minimo": 100.00,
-    "indicado_para": "Quem busca segurança com rendimento diário"
+    "nome": "Capital de Giro Linha Governamental (BNDES Progeren)",
+    "categoria": "Crédito Estruturado / Governamental",
+    "risco": "Baixo a Moderado",
+    "custo": "Custo Financeiro + Taxa do BNDES + Taxa do Agente Financeiro",
+    "prazo": "Longo prazo",
+    "indicado_para": "Apoio financeiro estrutural para aquisição de insumos, matérias-primas e recomposição de estoque[cite: 4, 5]."
   },
   {
-    "nome": "LCI/LCA",
-    "categoria": "renda_fixa",
-    "risco": "baixo",
-    "rentabilidade": "95% do CDI",
-    "aporte_minimo": 1000.00,
-    "indicado_para": "Quem pode esperar 90 dias (isento de IR)"
+    "nome": "Conta Garantida",
+    "categoria": "Crédito Rotativo",
+    "risco": "Moderado",
+    "custo": "Juros sobre o saldo devedor e encargos contratuais",
+    "prazo": "Imediato (disponibilidade permanente)",
+    "indicado_para": "Uso conforme a necessidade da empresa para cobrir descasamentos temporários no caixa[cite: 3, 6]."
   },
   {
-    "nome": "Fundo Imobiliário (FII)",
-    "categoria": "fundo",
-    "risco": "medio",
-    "rentabilidade": "Dividend Yield (DY) costuma ficar entre 6% a 12% ao ano",
-    "aporte_minimo": 100.00,
-    "indicado_para": "Perfil moderado que busca diversificação e renda recorrente mensal"
+    "nome": "Cheque Flex PJ",
+    "categoria": "Crédito Rotativo Emergencial",
+    "risco": "Alto (pela falta de garantia real imediata)",
+    "custo": "Juros cobrados apenas sobre o valor e o período utilizados",
+    "prazo": "Curto prazo / Imediato",
+    "indicado_para": "Necessidades emergenciais de caixa com renovação automática e simplicidade de uso[cite: 3, 6]."
   },
   {
-    "nome": "Fundo de Ações",
-    "categoria": "fundo",
-    "risco": "alto",
-    "rentabilidade": "Variável",
-    "aporte_minimo": 100.00,
-    "indicado_para": "Perfil arrojado com foco no longo prazo"
+    "nome": "Antecipação de Recebíveis (Cartões)",
+    "categoria": "Antecipação de Ativos",
+    "risco": "Baixo (garantido por vendas já realizadas)",
+    "custo": "Taxa de desconto por período antecipado",
+    "prazo": "Imediato",
+    "indicado_para": "Transformar vendas parceladas a cartão (Visa/Master) em recursos à vista para o caixa[cite: 3]."
+  },
+  {
+    "nome": "Antecipação de Duplicatas",
+    "categoria": "Antecipação de Ativos",
+    "risco": "Baixo a Moderado",
+    "custo": "Taxa de desconto + Tarifas bancárias",
+    "prazo": "Imediato",
+    "indicado_para": "Empresas que possuem vendas faturadas com duplicatas registradas em cobrança simples[cite: 3]."
+  },
+  {
+    "nome": "Cessão de Recebíveis ORPAGS",
+    "categoria": "Antecipação de Ativos",
+    "risco": "Baixo",
+    "custo": "Taxa de desconto competitiva e isenção de IOF",
+    "prazo": "Imediato",
+    "indicado_para": "Receber à vista vendas parceladas nos cartões com otimização tributária (sem IOF)[cite: 3]."
+  },
+  {
+    "nome": "Hot Money",
+    "categoria": "Crédito de Curtíssimo Prazo",
+    "risco": "Alto",
+    "custo": "Taxas diárias elevadas",
+    "prazo": "Curtíssimo prazo (até 29 dias)",
+    "indicado_para": "Cobertura de falhas pontuais e imediatas de caixa por poucos dias[cite: 3, 6]."
+  },
+  {
+    "nome": "Compror",
+    "categoria": "Financiamento de Compras",
+    "risco": "Moderado",
+    "custo": "Juros negociados para pagamento ao banco",
+    "prazo": "Curto a médio prazo",
+    "indicado_para": "Financiar a compra de bens e serviços junto a fornecedores, permitindo negociar descontos à vista[cite: 3, 6]."
+  },
+  {
+    "nome": "Vendor",
+    "categoria": "Financiamento de Vendas",
+    "risco": "Moderado",
+    "custo": "Taxas de financiamento repassadas ao comprador ou assumidas pela empresa",
+    "prazo": "Curto a médio prazo",
+    "indicado_para": "Empresas que desejam vender a prazo para seus clientes, mas receber o valor à vista do banco[cite: 3, 6]."
+  },{
+    "nome": "BNDES Finame (Pós-fixado)",
+    "categoria": "Financiamento de Bens (Repasse BNDES)",
+    "risco": "Baixo a Moderado",
+    "custo": "Custo Financeiro (TJLP/TLP) + Taxa do BNDES + Spread do Agente Financeiro",
+    "prazo": "Até 72 meses para pagar, com carência de até 6 meses para a primeira parcela do principal",
+    "indicado_para": "Aquisição de máquinas, equipamentos novos, caminhões, ônibus e tratores de fabricação nacional e cadastrados no CFI do BNDES."
+  },
+  {
+    "nome": "CDC Veículos PJ",
+    "categoria": "Financiamento de Veículos",
+    "risco": "Moderado",
+    "custo": "Taxas de juros prefixadas, IOF e Tarifas bancárias",
+    "prazo": "Até 60 meses para pagar, com até 60 dias para o vencimento da primeira parcela",
+    "indicado_para": "Aquisição ou troca de veículos leves e pesados, como automóveis, motos, caminhões e utilitários."
+  },
+  {
+    "nome": "CDC Outros Bens",
+    "categoria": "Financiamento de Bens Diversos",
+    "risco": "Moderado",
+    "custo": "Taxas de juros prefixadas e incidência de IOF",
+    "prazo": "De 1 a 48 meses para pagar, com carência de até 60 dias para a primeira parcela",
+    "indicado_para": "Financiamento de máquinas, equipamentos, eletrônicos, móveis de escritório, utensílios e equipamentos de informática."
   }
 ]
