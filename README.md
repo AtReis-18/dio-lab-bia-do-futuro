@@ -1,51 +1,53 @@
-# 🎓 Otto - Otimizador de Crédito Corpotativo
+# 🏭 Otto - Otimizador de Crédito Corporativo
 
-> Agente de IA Generativa que ensina conceitos de finanças pessoais de forma simples e personalizada, usando os próprios dados do cliente como exemplos práticos.
+> Agente de IA Generativa que ensina conceitos de estruturação de crédito e finanças empresariais de forma simples, focando em PMEs e usando o fluxo de caixa real da empresa como base para exemplos práticos.
 
-## 💡 O Que é o Edu?
+## 💡 O Que é o Otto?
 
-O Edu é um educador financeiro que **ensina**, não recomenda. Ele explica conceitos como reserva de emergência, tipos de investimentos e análise de gastos usando uma abordagem didática e exemplos concretos baseados no perfil do cliente.
+O Otto atua como um educador financeiro corporativo especializado em **crédito PJ**. Ele **ensina**, não vende e nem aprova crédito. Seu objetivo é explicar conceitos complexos do mercado bancário (como Capital de Giro, Antecipação de Recebíveis, FINAME e CDC) usando uma abordagem didática, voltada para gestores e empresários que precisam equilibrar o fluxo de caixa ou financiar bens operacionais.
 
-**O que o Edu faz:**
-- ✅ Explica conceitos financeiros de forma simples
-- ✅ Usa dados do cliente como exemplos práticos
-- ✅ Responde dúvidas sobre produtos financeiros
-- ✅ Analisa padrões de gastos de forma educativa
+**O que o Otto faz:**
+- ✅ Explica modalidades de crédito bancário de forma acessível.
+- ✅ Usa o fluxo de caixa da empresa (Planejado vs. Realizado) para diagnósticos educativos.
+- ✅ Ajuda a identificar a lógica de financiamento para bens móveis (maquinário/veículos) e imóveis (galpões).
+- ✅ Ensina estratégias para cobrir descasamentos entre prazos de fornecedores e recebimentos.
 
-**O que o Edu NÃO faz:**
-- ❌ Não recomenda investimentos específicos
-- ❌ Não acessa dados bancários sensíveis
-- ❌ Não substitui um profissional certificado
+**O que o Otto NÃO faz:**
+- ❌ Não faz recomendação de investimentos (foco é crédito e caixa).
+- ❌ Não acessa dados bancários sensíveis (como senhas ou tokens).
+- ❌ Não garante nem realiza a aprovação de linhas de crédito perante os bancos.
+- ❌ Não substitui o gerente de relacionamento ou um consultor financeiro certificado.
 
 ## 🏗️ Arquitetura
 
 ```mermaid
 flowchart TD
-    A[Usuário] --> B[Streamlit]
-    B --> C[Ollama - LLM Local]
-    C --> D[Base de Conhecimento]
+    A[Empresário/Usuário] --> B[Streamlit]
+    B --> C[API OpenAI - LLM na Nuvem]
+    C --> D[Base de Conhecimento Corporativa]
     D --> C
-    C --> E[Resposta Educativa]
+    C --> E[Resposta Consultiva/Educativa]
+
 ```
 
 **Stack:**
 - Interface: Streamlit
-- LLM: Ollama (modelo local `gpt-oss`)
+- LLM: OpenaAi
 - Dados: JSON/CSV mockados
 
 ## 📁 Estrutura do Projeto
 
 ```
-├── data/                          # Base de conhecimento
-│   ├── perfil_investidor.json     # Perfil do cliente
-│   ├── transacoes.csv             # Histórico financeiro
-│   ├── historico_atendimento.csv  # Interações anteriores
-│   └── produtos_financeiros.json  # Produtos para ensino
+├── data/                          # Base de conhecimento corporativa
+│   ├── perfil_cliente_pj.json     # Perfil da empresa (CNAE) e metas
+│   ├── fluxo_caixa_realizado.csv  # Histórico financeiro (Planejado vs Realizado)
+│   ├── historico_atendimento.csv  # Interações anteriores de crédito
+│   └── linhas_credito_pj.json     # Modalidades (Giro, CDC, FINAME, etc)
 │
 ├── docs/                          # Documentação completa
 │   ├── 01-documentacao-agente.md  # Caso de uso e persona
-│   ├── 02-base-conhecimento.md    # Estratégia de dados
-│   ├── 03-prompts.md              # System prompt e exemplos
+│   ├── 02-base-conhecimento.md    # Estratégia de dados e fluxos
+│   ├── 03-prompts.md              # System prompt e Few-Shot exemplos
 │   ├── 04-metricas.md             # Avaliação de qualidade
 │   └── 05-pitch.md                # Apresentação do projeto
 │
@@ -55,21 +57,19 @@ flowchart TD
 
 ## 🚀 Como Executar
 
-### 1. Instalar Ollama
+### 1. Configurar API da OpenAI
 
 ```bash
-# Baixar em: ollama.com
-ollama pull gpt-oss
-ollama serve
+export OPENAI_API_KEY="sua-chave-aqui"
 ```
 
 ### 2. Instalar Dependências
 
 ```bash
-pip install streamlit pandas requests
+pip install streamlit pandas openai
 ```
 
-### 3. Rodar o Edu
+### 3. Rodar o otto
 
 ```bash
 streamlit run src/app.py
@@ -77,26 +77,24 @@ streamlit run src/app.py
 
 ## 🎯 Exemplo de Uso
 
-**Pergunta:** "O que é CDI?"  
-**Edu:** "CDI é uma taxa de referência usada pelos bancos. Quando um investimento rende '100% do CDI', significa que ele acompanha essa taxa. Hoje o CDI está próximo da Selic. Quer que eu explique a diferença entre os dois?"
+**Pergunta:** "Otto, qual a diferença entre usar a Conta Garantida ou o limite do Empresarial Flex?"  
+"**Otto**: "O Empresarial Flex é um limite automático na conta para emergências de curtíssimo prazo, mas com juros altos. Já a Conta Garantida funciona como um empréstimo separado com garantias (como recebíveis), o que reduz a taxa de juros. Quer entender qual faz mais sentido para o seu momento?"
 
-**Pergunta:** "Onde estou gastando mais?"  
-**Edu:** "Olhando suas transações de outubro, sua maior despesa é moradia (R$ 1.380), seguida de alimentação (R$ 570). Juntas, representam quase 80% dos seus gastos. Isso é bem comum! Quer que eu explique algumas estratégias de organização?"
 
 ## 📊 Métricas de Avaliação
 
 | Métrica | Objetivo |
 |---------|----------|
-| **Assertividade** | O agente responde o que foi perguntado? |
-| **Segurança** | Evita inventar informações (anti-alucinação)? |
-| **Coerência** | A resposta é adequada ao perfil do cliente? |
+| **Assertividade** | O agente responde à dor financeira (caixa/aquisição) de forma precisa? |
+| **Segurança** | Evita inventar regras de crédito e taxas irreais (anti-alucinação)? |
+| **Coerência** |A resposta é adequada para uma PME conforme seu setor (CNAE)? |
 
 ## 🎬 Diferenciais
 
 - **Personalização:** Usa os dados do próprio cliente nos exemplos
-- **100% Local:** Roda com Ollama, sem enviar dados para APIs externas
-- **Educativo:** Foco em ensinar, não em vender produtos
-- **Seguro:** Estratégias de anti-alucinação documentadas
+- **Consultivo e Didático:** Ensina o empresário a escolher a linha de crédito correta por finalidade (Giro vs. Bens)
+- **Especialista:**: Foco em fluxo de caixa corporativo e ciclos de produção industriais.
+
 
 ## 📝 Documentação Completa
 
