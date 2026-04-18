@@ -1,11 +1,12 @@
 import json
 import pandas as pd
-import requests
 import streamlit as st
+from openai import OpenAI
 
 # ============ CONFIGURAÇÃO ============
-OLLAMA_URL = "http://localhost:11434/api/generate"
-MODELO = "gpt-oss"
+client = OpenAI(api_key="SUA_API_KEY_AQUI")  # ou use variável de ambiente
+
+MODELO = "gpt-4.1-mini"  # custo-benefício bom
 
 # ============ CARREGAR DADOS ============
 perfil = json.load(open('./data/perfil_investidor.json'))
@@ -33,34 +34,47 @@ PRODUTOS DISPONÍVEIS:
 SYSTEM_PROMPT = """Você é o Otto, um especialista em crédito PJ e educador financeiro amigável e didático.
 
 OBJETIVO:
-Analisar as necessidades de crédito de empresas (pequenas, médias e grandes) e ensinar conceitos financeiros de forma simples. Você deve focar em soluções para Fluxo de Caixa e financiamento de bens (móveis/imóveis), utilizando o contexto do cliente para tornar o aprendizado prático.
+Analisar as necessidades de crédito de empresas (pequenas, médias e grandes) e ensinar conceitos financeiros de forma simples.
 
 REGRAS:
-- NUNCA faça recomendações diretas de investimento ou decisões de crédito ("Você deve contratar X"). Em vez disso, diga: "O mercado oferece o caminho X para casos assim, que funciona de tal forma...".
-- JAMAIS solicite ou processe senhas e dados bancários sensíveis. Responda lembrando seu papel educativo e de segurança.
-- Use os dados fornecidos (como o setor de Embalagens Plásticas e o Planejado vs Realizado) para dar exemplos personalizados.
-- Linguagem simples e informal (tom de "parceiro de negócios"), evitando o "economês" sem explicação.
-- Se não souber algo, admita: "Essa informação não está no meu radar agora, mas posso explicar a lógica por trás disso...".
-- Sempre encerre com uma pergunta para validar o entendimento do usuário.
-- Responda de forma sucinta, com no máximo 3 parágrafos.
+- NUNCA faça recomendações diretas de investimento ou decisões de crédito.
+- JAMAIS solicite dados sensíveis.
+- Use exemplos com base nos dados fornecidos.
+- Linguagem simples e informal.
+- Sempre encerre com uma pergunta.
+- Máximo de 3 parágrafos.
 """
 
-# ============ CHAMAR OLLAMA ============
+# ============ CHAMAR OPENAI ============
 def perguntar(msg):
-    prompt = f"""
-    {SYSTEM_PROMPT}
+    response = client.responses.create(
+        model=MODELO,
+        input=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {
+                "role": "user",
+                "content": f"""
+CONTEXTO DO CLIENTE:
+{contexto}
 
-    CONTEXTO DO CLIENTE:
-    {contexto}
+Pergunta: {msg}
+"""
+            }
+        ],
+        temperature=0.7
+    )
 
-    Pergunta: {msg}"""
+    return response.output_text
 
-    r = requests.post(OLLAMA_URL, json={"model": MODELO, "prompt": prompt, "stream": False})
-    return r.json()['response']
 
 # ============ INTERFACE ============
 st.title("🎓 Otto, o Especialista em Crédito PJ")
 
+if pergunta := st.chat_input("Sua dúvida sobre Crédito PJ..."):
+    st.chat_message("user").write(pergunta)
+    with st.spinner("..."):
+        resposta = perguntar(pergunta)
+        st.chat_message("assistant").write(resposta)
 if pergunta := st.chat_input("Sua dúvida sobre Crédito PJ..."):
     st.chat_message("user").write(pergunta)
     with st.spinner("..."):
